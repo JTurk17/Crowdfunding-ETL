@@ -2,7 +2,7 @@
 
 The instructions for this mini project are divided into the following subsections:
 
-![image](Campaing DF.png)
+![image]([Campaing DF.png](https://github.com/JTurk17/Crowdfunding-ETL/blob/main/Images/Campaign%20DF.png))
 
 Create the Category and Subcategory DataFrames
 
