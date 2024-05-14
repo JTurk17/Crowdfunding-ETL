@@ -1,84 +1,33 @@
 # Crowdfunding-ETL
 
-The instructions for this mini project are divided into the following subsections:
+CREATING THE DATAFRAMES
 
-![screenshot]([Campaing DF.png](https://github.com/JTurk17/Crowdfunding-ETL/blob/main/Images/Campaign%20DF.png))
+We created the category and subcategory dataframes by first loading in the crowdingfunding data and saving it as a dataframe. From there we split the 'category & subcategory column' into 2 separate columns, one that held the category data and the other that held the subcategory data. We then saved the data from the category and subcategory series' as lists, and created two lists that held numbers for each item in the category and subcategory series. Finaly we turned the data with their respective numbered lists into dataframes, and saved the data as csv files. 
 
-Create the Category and Subcategory DataFrames
+![image](Images/Category_DF.png)
+![image](Images/Subcategory_DF.png)
 
-Create the Campaign DataFrame
+We created the campaign dataframe by first copying the original dataframe that held the data from the crowdfunding excel file. From there we saved only the columns that we wanted, merged the information from the category and subcategory dataframes, and changed the dates to datetime format. 
 
-Create the Contacts DataFrame
+![image](Images/Campaign_DF.png)
 
-Create the Crowdfunding Database
+For the contacts dataframe we loaded the contacts excel file and saved it as a dataframe. From there we saved the data as a list of lists that held the individual values, and turned that to a dataframe. Finally we created new columns for the first and last name and reordered the columns, 
 
-Create the Category and Subcategory DataFrames
-Extract and transform the crowdfunding.xlsx Excel data to create a category DataFrame that has the following columns:
+![image](Images/Contacts_DF.png)
 
-A "category_id" column that has entries going sequentially from "cat1" to "catn", where n is the number of unique categories
+CREATING THE ERD
 
-A "category" column that contains only the category titles
+Using https://app.quickdatabasediagrams.com/#/ we listed the columns from the dataframes as our variables in the tables. We made the Primary keys to be contact_id in contacts, category_id in categories, subcategory_id in subcategories, and cf_id in campaigns. 
 
-Export the category DataFrame as category.csv and save it to your GitHub repository.
+![image](Images/Campaign_ERD.png)
 
-Extract and transform the crowdfunding.xlsx Excel data to create a subcategory DataFrame that has the following columns:
+QUERYING THE TABLES
 
-A "subcategory_id" column that has entries going sequentially from "subcat1" to "subcatn", where n is the number of unique subcategories
-
-A "subcategory" column that contains only the subcategory titles
-Export the subcategory DataFrame as subcategory.csv and save it to your GitHub repository.
-
-Create the Campaign DataFrame
-Extract and transform the crowdfunding.xlsx Excel data to create a campaign DataFrame has the following columns:
-The "cf_id" column
-The "contact_id" column
-The "company_name" column
-The "blurb" column, renamed to "description"
-The "goal" column, converted to the float data type
-The "pledged" column, converted to the float data type
-The "outcome" column
-The "backers_count" column
-The "country" column
-The "currency" column
-The "launched_at" column, renamed to "launch_date" and with the UTC times converted to the datetime format
-The "deadline" column, renamed to "end_date" and with the UTC times converted to the datetime format
-The "category_id" column, with unique identification numbers matching those in the "category_id" column of the category DataFrame
-The "subcategory_id" column, with the unique identification numbers matching those in the "subcategory_id" column of the subcategory DataFrame
-Export the campaign DataFrame as campaign.csv and save it to your GitHub repository.
-Create the Contacts DataFrame
-Choose one of the following two options for extracting and transforming the data from the contacts.xlsx Excel data:
-Option 1: Use Python dictionary methods.
-Option 2: Use regular expressions.
-If you chose Option 1, complete the following steps:
-Import the contacts.xlsx file into a DataFrame.
-Iterate through the DataFrame, converting each row to a dictionary.
-Iterate through each dictionary, doing the following:
-Extract the dictionary values from the keys by using a Python list comprehension.
-Add the values for each row to a new list.
-Create a new DataFrame that contains the extracted data.
-Split each "name" column value into a first and last name, and place each in a new column.
-Clean and export the DataFrame as contacts.csv and save it to your GitHub repository.
-If you chose Option 2, complete the following steps:
-Import the contacts.xlsx file into a DataFrame.
-Extract the "contact_id", "name", and "email" columns by using regular expressions.
-Create a new DataFrame with the extracted data.
-Convert the "contact_id" column to the integer type.
-Split each "name" column value into a first and a last name, and place each in a new column.
-Clean and then export the DataFrame as contacts.csv and save it to your GitHub repository.
-Create the Crowdfunding Database
-Inspect the four CSV files, and then sketch an ERD of the tables by using QuickDBDLinks to an external site..
-
-Use the information from the ERD to create a table schema for each CSV file.
+After exporting the schema from quickdatabasediagrams, we copy and pasted the schema into a new database to create our tables. From there we loaded the data from our csv's into the tables. To create the tables in the correct order, run categories first, then subcategories, then contacts, and finally campaign. Load the data into the tables following the same order to avoid error. After running your tables should look like this:
 
 
-We Save the database schema as a Postgres file named crowdfunding_db_schema.sql, and save it to your GitHub repository.
-
-Create a new Postgres database, named crowdfunding_db.
-
-Using the database schema, create the tables in the correct order to handle the foreign keys.
-
-We Verify the table creation by running a SELECT statement for each table.
-
-Import each CSV file into its corresponding SQL table.
-
-Verify that each table has the correct data by running a SELECT statement for each.
+![image](Images/Category_Table.png)
+![image](Images/Subcategory_Table.png)
+![image](Images/Contacts_Table.png)
+![image](Images/Campaign_Table.png)
+ 
