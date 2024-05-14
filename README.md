@@ -2,6 +2,8 @@
 
 The instructions for this mini project are divided into the following subsections:
 
+![image](Campaing DF.png)
+
 Create the Category and Subcategory DataFrames
 
 Create the Campaign DataFrame
